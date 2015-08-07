@@ -10,13 +10,18 @@ How To Use
 3. Attach this fader script to it.
 4. Set its RectTransform like this: Anchor minX 0, maxX 1, minY 0, maxY 1, left top right buttom 0
 5. Now you can call fader from other script simply like this:
+
+```cs
 // field
 [SerializeField] Fader fader;
 // in some function
 fader.Begin(Fader.Style.BlackOut, 2f, "MainMenu");
+```
 
-where each arguments means:
-1st arg specifies fader style.
+###what each argument means
+1st arg specifies fader style from below:
+
+```
     BlackOut
     BlackIn
     WhiteOut
@@ -24,7 +29,10 @@ where each arguments means:
     BlackOutHalf
     Clear
     Fill
+```
+
 2nd arg sets fade time by seconds.
+
 3rd arg is optional. If you pass this argument, this script tries to switch to the scene specified by string.
 
 License
