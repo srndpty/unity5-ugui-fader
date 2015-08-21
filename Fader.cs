@@ -42,7 +42,7 @@ public class Fader : MonoBehaviour
         if (!isFading) return;
 
         // Update fading
-        fadeAlpha += Time.deltaTime / fadeTime * fadeDir;
+        fadeAlpha += Time.unscaledDeltaTime / fadeTime * fadeDir;
         fadeImg.color = new Color(fadeColor.x, fadeColor.y, fadeColor.z, fadeAlpha);
 
         if (fadeStyle == Style.BlackOutHalf && fadeAlpha > 0.5f)
