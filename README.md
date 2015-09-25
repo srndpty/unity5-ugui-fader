@@ -33,7 +33,12 @@ fader.Begin(Fader.Style.BlackOut, 2f, "MainMenu");
 
 2nd arg sets fade time by seconds.
 
-3rd arg is optional. If you pass this argument, this script tries to switch to the scene specified by string.
+3rd arg is optional. 
+###string
+If you pass this argument as string, this script tries to switch to the scene specified by string.
+
+###System.Action
+If you pass this argument as function, it will be invoked on fading is finished.
 
 License
 ---------
