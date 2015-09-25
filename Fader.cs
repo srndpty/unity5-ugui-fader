@@ -20,11 +20,24 @@ public class Fader : MonoBehaviour
     private float fadeAlpha;
     private string nextSceneName;
     private Vector3 fadeColor;
-    private bool isFading;
     private float fadeTime;
     private int fadeDir;
     private bool isPaused;
     private Style fadeStyle;
+    private System.Action callback;
+    private bool isFading;
+
+    public bool IsFading 
+    {
+        get 
+        { 
+            return isFading; 
+        } 
+        private set 
+        { 
+            isFading = value; 
+        } 
+    }
 
     // Use this for initialization
     void Start()
@@ -51,19 +64,45 @@ public class Fader : MonoBehaviour
         }
     }
 
-    public void Begin(Style style, float time, string sceneName = null)
+    public void Begin(Style style, float time)
+    {
+        Begin(style, time, (string)null);
+    }
+
+    public void Begin(Style style, float time, string sceneName)
     {
         // dont start new fade while fading
         if (isFading || isPaused) return;
-
-        // prevent 0 divide
-        if (time < 0.001f) time = 0.001f;
 
         // determine if goto next scene or not
         if (sceneName != null)
         {
             nextSceneName = sceneName;
         }
+        callback = null;
+
+        BeginInner(style, time);
+    }
+
+    public void Begin(Style style, float time, System.Action action)
+    {
+        // dont start new fade while fading
+        if (isFading || isPaused) return;
+
+        // determine if goto next scene or not
+        if (action != null)
+        {
+            callback = action;
+        }
+        nextSceneName = null;
+
+        BeginInner(style, time);
+    }
+
+    void BeginInner(Style style, float time)
+    {
+        // prevent 0 divide
+        if (time < 0.001f) time = 0.001f;
 
         if (style != Style.BlackOutHalf)
         {
@@ -82,6 +121,10 @@ public class Fader : MonoBehaviour
         if (nextSceneName != null)
         {
             Application.LoadLevel(nextSceneName);
+        }
+        else if (callback != null)
+        {
+            callback();
         }
     }
 
@@ -129,10 +172,11 @@ public class Fader : MonoBehaviour
         }
     }
 
-    public bool IsFading()
-    {
-        return isFading;
-    }
+//    [System.Obsolete("This getter function is obsolete. Use property named IsFading.")]
+//    public bool IsFading()
+//    {
+//        return isFading;
+//    }
 
     public void Pause()
     {
