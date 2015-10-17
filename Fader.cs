@@ -84,10 +84,7 @@ public class Fader : MonoBehaviour
 		if (isFading || isPaused) return;
 		
 		// determine if goto next scene or not
-		if (sceneName != null)
-		{
-			nextSceneName = sceneName;
-		}
+		nextSceneName = sceneName;
 		callback = null;
 		
 		BeginInner(style, time);
@@ -99,10 +96,7 @@ public class Fader : MonoBehaviour
 		if (isFading || isPaused) return;
 		
 		// determine if goto next scene or not
-		if (action != null)
-		{
-			callback = action;
-		}
+		callback = action;
 		nextSceneName = null;
 		
 		BeginInner(style, time);
