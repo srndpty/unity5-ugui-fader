@@ -6,34 +6,32 @@ This is a simple fader utility script for unity5 using uGUI.
 How To Use
 ---------
 1. Create Canvas, set Sort Order about 5000, and delete GraphicRaycaster component.
-2. Create a new gameobject as a child of the canvas.
-3. Attach this fader script to it.
-4. Set its RectTransform like this: Anchor minX 0, maxX 1, minY 0, maxY 1, left top right buttom 0
-5. Now you can call fader from other script simply like this:
+2. Create a new Image as a child of the canvas and set its RectTransform like this: Anchor minX 0, maxX 1, minY 0, maxY 1, left top right buttom 0.
+3. Attach this fader script to the parent Canvas.
+4. Now you can call fader from other script simply like this:
 
 ```cs
-// field
-[SerializeField] Fader fader;
-// in some function
-fader.Begin(Fader.Style.BlackOut, 2f, "MainMenu");
+// no need SerializeField anymore
+Fader.instance.BlackOut(Fader.DefaultFadeTime, "MainMenu");
+// or...
+Fader.instance.WhiteIn(2f, () => someGameObject.SetActive(true));
+```
+
+### Function List
+```
+    Fader.instance.BlackOut()
+    Fader.instance.BlackIn()
+    Fader.instance.WhiteOut()
+    Fader.instance.WhiteIn()
+    Fader.instance.BlackOutHalf()
+    Fader.instance.Clear()
+    Fader.instance.Fill()
 ```
 
 ###what each argument means
-1st arg specifies fader style from below:
+1st arg specifies fade time by seconds. if you omit this argument, it will be `Fader.DefaultFadeTime`.
 
-```
-    BlackOut
-    BlackIn
-    WhiteOut
-    WhiteIn
-    BlackOutHalf
-    Clear
-    Fill
-```
-
-2nd arg sets fade time by seconds.
-
-3rd arg is optional. 
+2nd arg is optional. 
 ###string
 If you pass this argument as string, this script tries to switch to the scene specified by string.
 
