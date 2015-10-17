@@ -15,7 +15,7 @@ public class Fader : MonoBehaviour
 		Fill
 	};
 	
-	const float StandardFadeTime = 1f;
+	const float DefaultFadeTime = 1f;
 	
 	public static Fader instance;
 	
@@ -182,31 +182,31 @@ public class Fader : MonoBehaviour
 	}
 	
 	// wrapper functions
-	public void BlackIn(float time = StandardFadeTime)   { Begin(Style.BlackIn, time, (string)null); }	
+	public void BlackIn(float time = DefaultFadeTime)    { Begin(Style.BlackIn, time, (string)null); }	
 	public void BlackIn(float time, string sceneName)    { Begin(Style.BlackIn, time, sceneName); }	
 	public void BlackIn(float time, System.Action action){ Begin(Style.BlackIn, time, action); }
 
-	public void BlackOut(float time = StandardFadeTime)   { Begin(Style.BlackOut, time, (string)null); }	
+	public void BlackOut(float time = DefaultFadeTime)    { Begin(Style.BlackOut, time, (string)null); }	
 	public void BlackOut(float time, string sceneName)    { Begin(Style.BlackOut, time, sceneName); }	
 	public void BlackOut(float time, System.Action action){ Begin(Style.BlackOut, time, action); }
 	
-	public void WhiteIn(float time = StandardFadeTime)   { Begin(Style.WhiteIn, time, (string)null); }	
+	public void WhiteIn(float time = DefaultFadeTime)    { Begin(Style.WhiteIn, time, (string)null); }	
 	public void WhiteIn(float time, string sceneName)    { Begin(Style.WhiteIn, time, sceneName); }	
 	public void WhiteIn(float time, System.Action action){ Begin(Style.WhiteIn, time, action); }
 	
-	public void WhiteOut(float time = StandardFadeTime)   { Begin(Style.WhiteOut, time, (string)null); }	
+	public void WhiteOut(float time = DefaultFadeTime)    { Begin(Style.WhiteOut, time, (string)null); }	
 	public void WhiteOut(float time, string sceneName)    { Begin(Style.WhiteOut, time, sceneName); }	
 	public void WhiteOut(float time, System.Action action){ Begin(Style.WhiteOut, time, action); }
 	
-	public void BlackOutHalf(float time = StandardFadeTime)   { Begin(Style.BlackOutHalf, time, (string)null); }	
+	public void BlackOutHalf(float time = DefaultFadeTime)    { Begin(Style.BlackOutHalf, time, (string)null); }	
 	public void BlackOutHalf(float time, string sceneName)    { Begin(Style.BlackOutHalf, time, sceneName); }	
 	public void BlackOutHalf(float time, System.Action action){ Begin(Style.BlackOutHalf, time, action); }
 	
-	public void Clear(float time = StandardFadeTime)   { Begin(Style.Clear, time, (string)null); }	
+	public void Clear(float time = DefaultFadeTime)    { Begin(Style.Clear, time, (string)null); }	
 	public void Clear(float time, string sceneName)    { Begin(Style.Clear, time, sceneName); }	
 	public void Clear(float time, System.Action action){ Begin(Style.Clear, time, action); }
 	
-	public void Fill(float time = StandardFadeTime)   { Begin(Style.Fill, time, (string)null); }	
+	public void Fill(float time = DefaultFadeTime)    { Begin(Style.Fill, time, (string)null); }	
 	public void Fill(float time, string sceneName)    { Begin(Style.Fill, time, sceneName); }	
 	public void Fill(float time, System.Action action){ Begin(Style.Fill, time, action); }
 							
