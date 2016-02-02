@@ -1,6 +1,15 @@
+// define macros
+#if UNITY_4_6 || UNITY_5_0 || UNITY_5_1 || UNITY_5_2
+#define UNITY_OLD_SCENE_MANAGEMENT
+#endif
+
+// usings
 using UnityEngine;
 using System.Collections;
 using UnityEngine.UI;
+#if !UNITY_OLD_SCENE_MANAGEMENT
+using UnityEngine.SceneManagement;
+#endif
 
 public class Fader : MonoBehaviour 
 {
@@ -123,8 +132,12 @@ public class Fader : MonoBehaviour
 		isFading = false;
 		if (nextSceneName != null)
 		{
+#if UNITY_OLD_SCENE_MANAGEMENT
 			Application.LoadLevel(nextSceneName);
-		}
+#else
+            SceneManager.LoadScene(nextSceneName);
+#endif
+	}
 		else if (callback != null)
 		{
 			callback();
