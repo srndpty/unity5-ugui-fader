@@ -6,7 +6,9 @@ This is a simple fader utility script for unity5 using uGUI.
 How To Use
 ---------
 Got Simplified!
+
 1. Import UguiFader.unitypackage
+
 That's it.
 Now you can call fader like below.
 
